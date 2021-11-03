@@ -71,6 +71,7 @@ let taskHandler = {
     renderAllTasks: function () {
 
     }
+
     
 }
 
