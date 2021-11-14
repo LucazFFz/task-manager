@@ -7,10 +7,11 @@ let taskHandler = {
     cacheDom: function() {
         // CACHE HTML ELEMENTS
         this.getInputTask = document.querySelector("#input-task");
-        this.getAddBtn = document.querySelector("#add-task-button");
+        this.getAddBtn = document.querySelector("#add-task-btn");
         this.getErrorMsg = document.querySelector(".errorMessage");
         this.getTasks = document.querySelector("#tasks");
         this.getTasksChildren = this.getTasks.children;
+        this.getClearCompletedBtn = document.querySelector("#clear-completed-btn");
     },
     setEvents: function() {
         // ADD EVENTS
@@ -33,13 +34,19 @@ let taskHandler = {
                 this.taskCompletedToggle(itemKey);
             }
         });
+        // !CLEAR COMPLETED EVENTS
+        this.getClearCompletedBtn.addEventListener("click", event => {
+            for (let index = 0; index < taskList.length; index++) {
+                if(taskList[index].isChecked) console.log("hej");
+            }
+        });
     },
-    handleInput: function(func) {
+    handleInput: function(callFunc) {
         resetError(); 
         let text = this.getInputTask.value;
         let result = validateInputText(text);
         if(result.valid == true) {
-            func(text);
+            callFunc(text);
             this.getInputTask.value = "";
         } else error(result.msg);
 
@@ -80,39 +87,47 @@ let taskHandler = {
     },
     taskCompletedToggle: function (key) {
         const index = taskList.findIndex(item => item.id === Number(key));
-        taskList[index].checked = !taskList[index].checked;
+        taskList[index].isChecked = !taskList[index].isChecked;
         this.renderTask(taskList[index]);
     },
+    tasksLeftCounter: function () {
+        const taskCounter = taskList.filter(task => !task.isChecked).length;
+        const counter = document.querySelector("#tasks-left");
+        const counterString = taskCounter === 1 ? "item" : "items";
+        counter.innerText = `${taskCounter} ${counterString} left`;
+    },
     renderTask: function(task) {
-        let newTaskLi, newTaskCheckbox, newTaskName, newTaskDeleteBtn;
-        // GET TASK HTML ELEMENT
+        // GET HTML ELEMENT OF TASK
         const item = document.querySelector(`[data-key="${task.id}"]`);
-        // CHECK IF DELETED
-        if(task.deleted) {
-            item.remove();
-            return;
+        // CHECKS
+        if(task.deleted) item.remove();
+        else if(item) {
+            this.getTasks.replaceChild(buildHTML(), item);
+        } else this.getTasks.appendChild(buildHTML());
+        this.tasksLeftCounter();
+
+        function buildHTML() {
+            let newTaskLi, newTaskCheckbox, newTaskName, newTaskDeleteBtn;
+            // BUILD HTML
+            newTaskLi = document.createElement("li");
+            let isCompleted = task.checked ? "completed" : "";
+            newTaskLi.setAttribute("class", `task ${isCompleted}`);
+            newTaskLi.setAttribute("data-key", task.id);
+            // CHECKBOX
+            newTaskCheckbox = document.createElement("input");
+            newTaskCheckbox.setAttribute("type", "checkbox");
+            newTaskCheckbox.setAttribute("class", "completed-task");
+            // DELETE BUTTON
+            newTaskDeleteBtn = document.createElement("button");
+            newTaskDeleteBtn.setAttribute("class", "delete-task");
+            newTaskDeleteBtn.innerText = "Delete";
+            // USER TASK
+            newTaskName = document.createTextNode(task.text);
+            // APPEND ELEMENTS TO TASK LI
+            newTaskLi.appendChild(newTaskCheckbox);
+            newTaskLi.appendChild(newTaskName);
+            newTaskLi.appendChild(newTaskDeleteBtn);
+            return newTaskLi;
         }
-        // BUILD HTML
-        newTaskLi = document.createElement("li");
-        let isCompleted = task.checked ? "completed" : "";
-        newTaskLi.setAttribute("class", `task ${isCompleted}`);
-        newTaskLi.setAttribute("data-key", task.id);
-        // CHECKBOX
-        newTaskCheckbox = document.createElement("input");
-        newTaskCheckbox.setAttribute("type", "checkbox");
-        newTaskCheckbox.setAttribute("class", "completed-task");
-        // DELETE BUTTON
-        newTaskDeleteBtn = document.createElement("button");
-        newTaskDeleteBtn.setAttribute("class", "delete-task");
-        // USER TASK
-        newTaskName = document.createTextNode(task.text);
-        // APPEND ELEMENTS TO TASK LI
-        newTaskLi.appendChild(newTaskCheckbox);
-        newTaskLi.appendChild(newTaskName);
-        newTaskLi.appendChild(newTaskDeleteBtn);
-        //ADD TASK TO TASK LIST
-        if(item) {
-            this.getTasks.replaceChild(newTaskLi, item);
-        } else this.getTasks.appendChild(newTaskLi);
     }
 }
