@@ -107,7 +107,7 @@ let taskHandler = {
         this.tasksLeftCounter();
 
         function buildHTML() {
-            let newTaskLi, newTaskCheckbox, newTaskName, newTaskDeleteBtn;
+            let newTaskLi, newTaskCheckbox, newTaskName, newTaskDeleteBtn, newTaskText;
             // BUILD HTML
             newTaskLi = document.createElement("li");
             let isCompleted = task.checked ? "completed" : "";
@@ -122,10 +122,13 @@ let taskHandler = {
             newTaskDeleteBtn.setAttribute("class", "delete-task");
             newTaskDeleteBtn.innerText = "Delete";
             // USER TASK
+            newTaskText = document.createElement("p");
+            newTaskText.setAttribute("class", "text");
             newTaskName = document.createTextNode(task.text);
+            newTaskText.appendChild(newTaskName);
             // APPEND ELEMENTS TO TASK LI
             newTaskLi.appendChild(newTaskCheckbox);
-            newTaskLi.appendChild(newTaskName);
+            newTaskLi.appendChild(newTaskText);
             newTaskLi.appendChild(newTaskDeleteBtn);
             return newTaskLi;
         }
