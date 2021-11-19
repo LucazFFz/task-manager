@@ -34,11 +34,9 @@ let taskHandler = {
                 this.taskCompletedToggle(itemKey);
             }
         });
-        // !CLEAR COMPLETED EVENTS
+        // CLEAR COMPLETED EVENTS
         this.getClearCompletedBtn.addEventListener("click", event => {
-            for (let index = 0; index < taskList.length; index++) {
-                if(taskList[index].isChecked) console.log("hej");
-            }
+            this.deleteCompletedTasks(taskList);
         });
     },
     handleInput: function(callFunc) {
@@ -85,16 +83,22 @@ let taskHandler = {
         taskList.splice(index, 1);
         this.renderTask(task);
     },
-    taskCompletedToggle: function (key) {
+    taskCompletedToggle: function(key) {
         const index = taskList.findIndex(item => item.id === Number(key));
         taskList[index].isChecked = !taskList[index].isChecked;
         this.renderTask(taskList[index]);
     },
-    tasksLeftCounter: function () {
+    tasksLeftCounter: function() {
         const taskCounter = taskList.filter(task => !task.isChecked).length;
         const counter = document.querySelector("#tasks-left");
         const counterString = taskCounter === 1 ? "item" : "items";
         counter.innerText = `${taskCounter} ${counterString} left`;
+    },
+    deleteCompletedTasks: function(taskList) {
+        let list = [];
+        // ADD TO TEMPORARY ARRAY
+        taskList.forEach(task => { if(task.isChecked) list.push(task); });
+        list.forEach(task => { this.deleteTask(task.id); });
     },
     renderTask: function(task) {
         // GET HTML ELEMENT OF TASK
