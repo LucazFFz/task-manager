@@ -8,22 +8,27 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <img src="images/banner.png" alt="" class="banner" />
-    <div class="tasker">
-      <h1>TODO</h1>
-      <div class="task-header">
+    <banner>
+      <img src="images/banner.png" alt="" class="banner" />
+      <div class="gradient"></div>
+    </banner>
+    <main class="tasker">
+      <form class="task-header">
+        <h1>TODO</h1>
         <p class="errorMessage"></p>
         <input type="text" id="input-task" placeholder="Enter a task" />
         <button id="add-task-btn">Add</button>
+      </form>
+      <div>
+        <section class="tasker-body">
+          <ul id="tasks"></ul>
+        </section>
+        <footer class="controls">
+          <p id="tasks-left">0 items left</p>
+          <button id="clear-completed-btn">Clear completed</button>
+        </footer>
       </div>
-      <div class="tasker-body">
-        <ul id="tasks"></ul>
-      </div>
-      <div class="controls">
-        <p id="tasks-left">0 items left</p>
-        <button id="clear-completed-btn">Clear completed</button>
-      </div>
-    </div>
+    </main>
   </body>
 
   <script src="task.js"></script>

@@ -1,24 +1,20 @@
 let taskList = [];
 let taskHandler = {
     init: function () {
-        this.cacheDom();
-        this.setEvents();
-    },
-    cacheDom: function() {
-        // CACHE HTML ELEMENTS
+        // --- CACHE HTML ELEMENTS ---
         this.getInputTask = document.querySelector("#input-task");
         this.getAddBtn = document.querySelector("#add-task-btn");
         this.getErrorMsg = document.querySelector(".errorMessage");
         this.getTasks = document.querySelector("#tasks");
         this.getTasksChildren = this.getTasks.children;
         this.getClearCompletedBtn = document.querySelector("#clear-completed-btn");
-    },
-    setEvents: function() {
+
+        // --- SET EVENTS ---
         // ADD EVENTS
         this.getAddBtn.addEventListener("click", 
-        this.handleInput.bind(this, this.addTask));
+        this.handleInput.bind(this));
         window.addEventListener("keypress", event => {
-            if(event.code === "Enter") this.handleInput(this.addTask);
+            if(event.code === "Enter") this.handleInput();
         });
         // DELETE EVENTS
         this.getTasks.addEventListener("click", event => {
@@ -35,16 +31,19 @@ let taskHandler = {
             }
         });
         // CLEAR COMPLETED EVENTS
-        this.getClearCompletedBtn.addEventListener("click", event => {
+        this.getClearCompletedBtn.addEventListener("click", () => {
             this.deleteCompletedTasks(taskList);
         });
     },
-    handleInput: function(callFunc) {
-        resetError(); 
+    handleInput: function() {
         let text = this.getInputTask.value;
+        // RESET ERROR
+        taskHandler.getInputTask.removeAttribute("class", "error");
+        taskHandler.getErrorMsg.innerHTML = "";
+        // CONTROL TEXT
         let result = validateInputText(text);
         if(result.valid == true) {
-            callFunc(text);
+            this.addTask(text);
             this.getInputTask.value = "";
         } else error(result.msg);
 
@@ -59,10 +58,6 @@ let taskHandler = {
         function error(msg) {
             taskHandler.getInputTask.setAttribute("class", "error");
             taskHandler.getErrorMsg.innerHTML = msg;
-        }
-        function resetError() {
-            taskHandler.getInputTask.removeAttribute("class", "error");
-            taskHandler.getErrorMsg.innerHTML = "";
         }
     },
     addTask: function(text) {

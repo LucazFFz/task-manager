@@ -1,4 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 body {
+  letter-spacing: 0.05em;
+  font-family: "Poppins";
+  user-select: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,6 +12,8 @@ body {
 }
 
 h1 {
+  position: absolute;
+  z-index: 100;
   color: white;
   font-style: normal;
   font-weight: 600;
@@ -14,13 +21,35 @@ h1 {
   line-height: 96px;
   letter-spacing: 0.1em;
   margin: 0;
-  margin-top: 100px;
+  margin-top: 70px;
   margin-bottom: 10px;
 }
 
-.banner {
+.gradient {
   position: absolute;
-  align-self: flex-start;
+  background: linear-gradient(
+    109.75deg,
+    rgba(217, 82, 4, 0.7) 5.1%,
+    rgba(217, 164, 4, 0.7) 93.98%
+  );
+  width: 100%;
+  height: 360px;
+}
+
+banner {
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+}
+
+.banner {
+  width: 100%;
+  position: absolute;
+  margin: 0;
+  padding: 0;
 }
 
 .tasker {
@@ -46,7 +75,7 @@ h1 {
   border: none;
   outline: none;
   background-color: white;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 300;
   font-style: normal;
   color: black;
@@ -59,20 +88,27 @@ h1 {
 }
 
 ::placeholder {
-  font-size: 18px;
+  letter-spacing: 0.05em;
+  font-family: "Poppins";
+  font-size: 16px;
   font-weight: 300;
   font-style: normal;
   color: #b1b1b1;
   line-height: 27px;
 }
 
-.tasker-body {
-  width: 100%;
-  border-radius: 8px;
-  width: 674.98px;
-  height: 630px;
-  background-color: white;
+div {
   box-shadow: 0px 10px 30px 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+}
+
+.tasker-body {
+  position: relative;
+  overflow: auto;
+  border-radius: 8px 8px 0 0;
+  width: 674.98px;
+  height: 490px;
+  background-color: white;
 }
 
 .tasker-body #tasks {
@@ -83,7 +119,7 @@ h1 {
 
 .tasker-body #tasks li {
   display: flex;
-  justify-content: flex-start;
+  width: 100%;
   align-items: center;
   text-decoration: none;
   list-style: none;
@@ -93,21 +129,47 @@ h1 {
 
 .tasker-body #tasks li .completed-task {
   margin-left: 20px;
-  margin-right: 20px;
 }
 
 .tasker-body #tasks li .text {
   font-size: 18px;
-  width: 100%;
+  margin-left: 20px;
 }
 
 .tasker-body #tasks li .delete-task {
+  margin-left: auto;
   margin-right: 10px;
-}
-
-.controls {
 }
 
 .error {
   border-color: red;
+}
+
+.controls {
+  border-top: 1px solid #c6c6c6;
+  width: 674.98px;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+#tasks-left {
+  font-weight: 300;
+  margin-left: 40px;
+  font-size: 16px;
+  color: #595959;
+}
+
+#clear-completed-btn {
+  cursor: pointer;
+  font-family: "Poppins";
+  margin-right: 40px;
+  border: none;
+  background-color: transparent;
+  font-weight: 300;
+  margin-left: 40px;
+  font-size: 16px;
+  color: #595959;
 }
