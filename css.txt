@@ -1,0 +1,175 @@
+body {
+  letter-spacing: 0.05em;
+  font-family: "Poppins";
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  position: relative;
+  z-index: 100;
+  color: white;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 96px;
+  letter-spacing: 0.1em;
+  margin: 0;
+  margin-top: 70px;
+  margin-bottom: 10px;
+}
+
+.gradient {
+  position: absolute;
+  background: linear-gradient(
+    109.75deg,
+    rgba(217, 82, 4, 0.7) 5.1%,
+    rgba(217, 164, 4, 0.7) 93.98%
+  );
+  width: 100%;
+  height: 360px;
+}
+
+banner {
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+}
+
+.banner {
+  width: 100%;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+}
+
+.tasker {
+  z-index: 0;
+}
+
+.task-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 8px;
+  width: 673.98px;
+  height: 70px;
+  background-color: white;
+  margin-bottom: 30px;
+  box-shadow: 0px 10px 30px 10px rgba(0, 0, 0, 0.1);
+}
+
+.task-header #input-task {
+  width: 100%;
+  height: 80%;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  background-color: white;
+  font-size: 16px;
+  font-weight: 300;
+  font-style: normal;
+  color: black;
+  line-height: 27px;
+  padding-left: 20px;
+}
+
+.task-header #add-task-btn {
+  margin-right: 10px;
+}
+
+::placeholder {
+  letter-spacing: 0.05em;
+  font-family: "Poppins";
+  font-size: 16px;
+  font-weight: 300;
+  font-style: normal;
+  color: #b1b1b1;
+  line-height: 27px;
+}
+
+div {
+  overflow: hidden;
+  box-shadow: 0px 10px 30px 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+}
+
+.tasker-body {
+  position: relative;
+  overflow: auto;
+  border-radius: 8px 8px 0 0;
+  width: 674.98px;
+  height: 497px;
+  background-color: white;
+}
+
+.tasker-body #tasks {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.tasker-body #tasks li {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  text-decoration: none;
+  list-style: none;
+  height: 70px;
+  border-bottom: 1px solid #c6c6c6;
+}
+
+.tasker-body #tasks li .completed-task {
+  margin-left: 20px;
+}
+
+.tasker-body #tasks li .text {
+  font-size: 18px;
+  margin-left: 20px;
+}
+
+.tasker-body #tasks li .delete-task {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.error {
+  border-color: red;
+}
+
+.controls {
+  box-shadow: 0 2px 20px 0 #c6c6c6;
+  width: 674.98px;
+  display: flex;
+  position: relative;
+  border-radius: 0 0 8px 8px;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+#tasks-left {
+  font-weight: 300;
+  margin-left: 40px;
+  font-size: 16px;
+  color: #595959;
+}
+
+#clear-completed-btn {
+  cursor: pointer;
+  font-family: "Poppins";
+  margin-right: 40px;
+  border: none;
+  background-color: transparent;
+  font-weight: 300;
+  margin-left: 40px;
+  font-size: 16px;
+  color: #595959;
+}
