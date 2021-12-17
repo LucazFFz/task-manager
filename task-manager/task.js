@@ -2,9 +2,9 @@ let taskList = [];
 let taskHandler = {
     init: function () {
         // --- CACHE HTML ELEMENTS ---
-        this.getInputTask = document.querySelector("#input-text");
+        this.getInputTask = document.querySelector("#tasker-input");
+        this.getInputText = document.querySelector("#input-text");
         this.getAddBtn = document.querySelector("#add-task-btn");
-        this.getErrorMsg = document.querySelector("#error-message");
         this.getTasks = document.querySelector("#tasks");
         this.getTasksChildren = this.getTasks.children;
         this.getClearCompletedBtn = document.querySelector("#clear-completed-btn");
@@ -36,29 +36,26 @@ let taskHandler = {
         });
     },
     handleInput: function() {
-        console.log("hej");
-        let text = this.getInputTask.value;
+        let text = taskHandler.getInputText.value;
+    
         // RESET ERROR
-        taskHandler.getInputTask.removeAttribute("class", "error");
-        taskHandler.getErrorMsg.innerHTML = "";
+        taskHandler.getInputTask.classList.remove("error")
         // CONTROL TEXT
         let result = validateInputText(text);
-        if(result.valid == true) {
+        if(result == true) {
+            taskHandler.getInputText.value = "";
             this.addTask(text);
-            this.getInputTask.value = "";
-        } else error(result.msg);
+        } else error();
 
         function validateInputText(text) {
             // CONTROL TASK TEXT
             // RETURNS AN OBJECT
-            if(text == "") return {valid: false, msg: "Enter a task"};
-            if(taskList.some(obj => obj.text == text)) 
-            return {valid: false, msg: "Task already exists"};
-            return {valid: true};
+            if(text == "") return false;
+            if(taskList.some(obj => obj.text == text)) return false;
+            return true;
         }
-        function error(msg) {
-            taskHandler.getInputTask.setAttribute("class", "error");
-            taskHandler.getErrorMsg.innerHTML = msg;
+        function error() {
+            taskHandler.getInputTask.classList.add("error");
         }
     },
     addTask: function(text) {
@@ -107,7 +104,7 @@ let taskHandler = {
         this.tasksLeftCounter();
 
         function buildHTML() {
-            let newTaskLi, newTaskCheckbox, newTaskName, newTaskDeleteBtn, newAwesomeFonts, newTaskText;
+            let newTaskLi, newTaskCheckbox, newTaskName, newTaskDeleteBtn, newTaskText;
             // BUILD HTML
             newTaskLi = document.createElement("li");
             let isCompleted = task.isChecked ? " completed" : "";
@@ -117,13 +114,19 @@ let taskHandler = {
             // CHECKBOX
             newTaskCheckbox = document.createElement("input");
             newTaskCheckbox.setAttribute("type", "checkbox");
-            newTaskCheckbox.setAttribute("class", "completed-task");
+            newTaskCheckbox.setAttribute("class", "btn completed-task");
+            if(task.isChecked) {
+                let newIconCheck = document.createElement("i");
+                newIconCheck.setAttribute("class", 'fas fa-check');
+                newTaskCheckbox.appendChild(newIconCheck);
+            }
+           
             // DELETE BUTTON
             newTaskDeleteBtn = document.createElement("button");
             newTaskDeleteBtn.setAttribute("class", "body-text btn delete-task");
-            newAwesomeFonts = document.createElement("i");
-            newAwesomeFonts.setAttribute("class", 'fas fa-trash');
-            newTaskDeleteBtn.appendChild(newAwesomeFonts);
+            let newIconTrash = document.createElement("i");
+            newIconTrash.setAttribute("class", 'fas fa-trash');
+            newTaskDeleteBtn.appendChild(newIconTrash);
             // USER TASK
             newTaskText = document.createElement("p");
             newTaskText.setAttribute("class", "body-text text");
