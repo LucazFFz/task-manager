@@ -135,13 +135,14 @@ body {
   transition: 150ms ease-in-out;
 }
 
+.error::before {
+  border-color: var(--clr-red) !important;
+}
+
 .focus::before {
   transform: scaleX(1) !important;
 }
 
-.error::before {
-  border-color: var(--clr-red) !important;
-}
 
 #input-text {
   position: relative;
