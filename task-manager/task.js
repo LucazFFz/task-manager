@@ -2,9 +2,9 @@ let taskList = [];
 let taskHandler = {
     init: function () {
         // --- CACHE HTML ELEMENTS ---
-        this.getInputTask = document.querySelector("#input-task");
+        this.getInputTask = document.querySelector("#input-text");
         this.getAddBtn = document.querySelector("#add-task-btn");
-        this.getErrorMsg = document.querySelector(".errorMessage");
+        this.getErrorMsg = document.querySelector("#error-message");
         this.getTasks = document.querySelector("#tasks");
         this.getTasksChildren = this.getTasks.children;
         this.getClearCompletedBtn = document.querySelector("#clear-completed-btn");
@@ -36,6 +36,7 @@ let taskHandler = {
         });
     },
     handleInput: function() {
+        console.log("hej");
         let text = this.getInputTask.value;
         // RESET ERROR
         taskHandler.getInputTask.removeAttribute("class", "error");
@@ -106,11 +107,12 @@ let taskHandler = {
         this.tasksLeftCounter();
 
         function buildHTML() {
-            let newTaskLi, newTaskCheckbox, newTaskName, newTaskDeleteBtn, newTaskText;
+            let newTaskLi, newTaskCheckbox, newTaskName, newTaskDeleteBtn, newAwesomeFonts, newTaskText;
             // BUILD HTML
             newTaskLi = document.createElement("li");
-            let isCompleted = task.checked ? "completed" : "";
-            newTaskLi.setAttribute("class", `task ${isCompleted}`);
+            let isCompleted = task.isChecked ? " completed" : "";
+            console.log(`task${isCompleted}`);
+            newTaskLi.setAttribute("class", `task${isCompleted}`);
             newTaskLi.setAttribute("data-key", task.id);
             // CHECKBOX
             newTaskCheckbox = document.createElement("input");
@@ -118,11 +120,13 @@ let taskHandler = {
             newTaskCheckbox.setAttribute("class", "completed-task");
             // DELETE BUTTON
             newTaskDeleteBtn = document.createElement("button");
-            newTaskDeleteBtn.setAttribute("class", "delete-task");
-            newTaskDeleteBtn.innerText = "Delete";
+            newTaskDeleteBtn.setAttribute("class", "body-text btn delete-task");
+            newAwesomeFonts = document.createElement("i");
+            newAwesomeFonts.setAttribute("class", 'fas fa-trash');
+            newTaskDeleteBtn.appendChild(newAwesomeFonts);
             // USER TASK
             newTaskText = document.createElement("p");
-            newTaskText.setAttribute("class", "text");
+            newTaskText.setAttribute("class", "body-text text");
             newTaskName = document.createTextNode(task.text);
             newTaskText.appendChild(newTaskName);
             // APPEND ELEMENTS TO TASK LI

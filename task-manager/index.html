@@ -8,24 +8,33 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <banner>
+    <banner id="banner">
       <img src="images/banner.png" alt="" class="banner" />
-      <div class="gradient"></div>
+      <div id="gradient"></div>
     </banner>
-    <main class="tasker">
-      <section class="task-header">
-        <h1>TODO</h1>
-        <p class="errorMessage"></p>
-        <input type="text" id="input-task" placeholder="Enter a task" />
-        <button id="add-task-btn">Add</button>
+    <main id="tasker">
+      <h1 class="header-text">TODO</h1>
+      <section id="tasker-input">
+        <p id="error-message"></p>
+        <input
+          type="text"
+          id="input-text"
+          class="body-text"
+          placeholder="Enter a task"
+        />
+        <button id="add-task-btn" class="btn body-text">
+          <i class="fas fa-chevron-down"></i>
+        </button>
       </section>
       <section>
-        <div class="tasker-body">
+        <div id="tasker-body">
           <ul id="tasks"></ul>
         </div>
-        <div class="controls">
-          <p id="tasks-left">0 items left</p>
-          <button id="clear-completed-btn">Clear completed</button>
+        <div id="tasker-controls">
+          <p id="tasks-left" class="light-text">0 items left</p>
+          <button id="clear-completed-btn" class="btn light-text">
+            Clear completed
+          </button>
         </div>
       </section>
     </main>
@@ -33,4 +42,8 @@
 
   <script src="task.js"></script>
   <script src="index.js"></script>
+  <script
+    src="https://kit.fontawesome.com/411249031c.js"
+    crossorigin="anonymous"
+  ></script>
 </html>
