@@ -97,43 +97,45 @@ body {
 #tasker {
   position: absolute;
   display: block;
-  top: 100px;
+  top: 70px;
   width: 670px;
 }
 
 #tasker h1 {
   padding: 0;
-  margin: 0;
+  margin: 0 0 30px 0;
 }
 
 /* TASKER INPUT */
 
 #tasker-input {
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: center;
-  overflow: hidden;
   border-radius: var(--border-radius);
   background-color: white;
   height: 70px;
   margin: 0 0 35px 0;
+  transition: 150ms ease-in-out;
 }
 
 #tasker-input::before {
   z-index: -1;
   content: "";
   position: absolute;
-  border-radius: var(--border-radius);
-  border-bottom: 8px solid black;
+  border-radius: calc(1 * var(--border-radius));
+  border-bottom: 8px solid rgb(34, 180, 100);
   left: 0;
+  bottom: -4px;
   width: 100%;
-  height: 70px;
+  height: 50%;
   transform-origin: 0;
   transform: scaleX(0);
   transition: 150ms ease-in-out;
 }
 
-.focus::before{
+.focus::before {
   transform: scaleX(1) !important;
 }
 
@@ -142,7 +144,9 @@ body {
 }
 
 #input-text {
+  position: relative;
   font-family: "Poppins", sans-serif;
+  background-color: transparent;
   letter-spacing: 0.05em;
   font-size: 18px;
   color: black;
@@ -206,46 +210,34 @@ body {
   position: relative;
   appearance: none;
   border-radius: 50%;
-  background: linear-gradient(
-  #D95204 0%,
-  #D9A404 100%
-  );
+  background: linear-gradient(#d95204 0%, #d9a404 100%);
   margin: 0 0 0 20px;
   padding: 9px;
   transition: 150ms ease-in-out;
 }
 
-.completed-task::after, .completed-task::before {
-
-}
-
 .completed-task::before {
   position: absolute;
+  background-color: white;
   margin: -38% 0 0 -38%;
   border-radius: 50%;
-  content: '';
+  content: "";
   width: 76%;
   height: 76%;
- 
-  background-color: white;
 }
 
-.completed-task::after{
-  content: '';
+.completed-task::after {
+  content: "";
   position: absolute;
   margin: -5px 0 0 -5px;
   width: 10px;
   height: 10px;
   background-image: url("images/check.svg");
- 
-  
 }
 
 .completed-task:hover {
   transform: scale(1.5);
 }
-
-
 
 .completed input::before {
   background: transparent !important;
@@ -281,7 +273,6 @@ body {
 .delete-task i {
   pointer-events: none;
 }
-
 
 /* TASKER CONTROLS */
 

@@ -6,7 +6,7 @@ window.onload = function() {
 let getTaskerInput = document.querySelector("#tasker-input");
 let getInputText = document.querySelector("#input-text");
 getInputText.addEventListener("focusin", () => {
-    getTaskerInput.classList.add("focus");
+    if(getInputText.value != "") getTaskerInput.classList.add("written");
 });
 getInputText.addEventListener("focusout", () => {
     getTaskerInput.classList.remove("focus");
