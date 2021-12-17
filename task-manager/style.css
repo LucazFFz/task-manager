@@ -215,6 +215,10 @@ body {
   transition: 150ms ease-in-out;
 }
 
+.completed-task::after, .completed-task::before {
+
+}
+
 .completed-task::before {
   position: absolute;
   margin: -38% 0 0 -38%;
@@ -222,11 +226,19 @@ body {
   content: '';
   width: 76%;
   height: 76%;
+ 
   background-color: white;
 }
 
-.completed-task::after {
+.completed-task::after{
+  content: '';
+  position: absolute;
+  margin: -5px 0 0 -5px;
+  width: 10px;
+  height: 10px;
+  background-image: url("images/check.svg");
  
+  
 }
 
 .completed-task:hover {
