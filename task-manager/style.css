@@ -25,18 +25,21 @@ html {
   --box-shadow: 0 0.6em 1.8em 0.6em rgba(0, 0, 0, 0.1);
   --standard-transition: 150ms ease-in-out;
 
-  --clr-gray: #595959;
-  --clr-light-gray: #b1b1b1;
-  --clr-orange: rgba(217, 80, 4, 0.7);
-  --clr-yellow: rgba(217, 160, 4, 0.7);
-  --clr-red: red;
-  --clr-white: white;
+  --clr-text-dark: black;
+  --clr-text-light: #595959;
+  --clr-accent: #b1b1b1;
+  --clr-primary: rgba(217, 80, 4, 0.7);
+  --clr-secondary: rgba(217, 160, 4, 0.7);
+  --clr-danger: red;
+  --clr-accept: rgb(34, 180, 100);
+  --clr-background: white;
 }
 
 body {
   display: flex;
   position: relative;
   justify-content: center;
+  background-color: v;
   align-items: center;
   user-select: none;
   width: 100%;
@@ -64,7 +67,7 @@ button,
 
 ::placeholder {
   font-style: italic;
-  color: var(--clr-light-gray);
+  color: var(--clr-accent);
 }
 
 h1 {
@@ -72,11 +75,11 @@ h1 {
   margin: 0 0 0.3em 0;
   font-size: 4rem;
   font-weight: 600;
-  color: white;
+  color: var(--clr-background);
 }
 
 .light-text {
-  color: var(--clr-gray);
+  color: var(--clr-text-light);
 }
 
 /* -------------
@@ -119,8 +122,8 @@ banner overlay {
   position: absolute;
   background: linear-gradient(
     100deg,
-    var(--clr-orange) 5%,
-    var(--clr-yellow) 90%
+    var(--clr-primary) 5%,
+    var(--clr-secondary) 90%
   );
   width: 100%;
   height: 100%;
@@ -144,7 +147,7 @@ banner overlay {
   position: relative;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--clr-white);
+  background-color: var(--clr-background);
   border-radius: var(--border-radius);
   height: var(--task-height);
   margin: 0 0 calc(var(--task-height) / 2) 0;
@@ -155,7 +158,7 @@ banner overlay {
   content: "";
   position: absolute;
   border-radius: calc(1 * var(--border-radius));
-  border-bottom: 0.6em solid rgb(34, 180, 100);
+  border-bottom: 0.6em solid var(--clr-accent);
   z-index: -1;
   left: 0;
   bottom: -0.3em;
@@ -167,7 +170,7 @@ banner overlay {
 }
 
 .error::before {
-  border-color: var(--clr-red) !important;
+  border-color: var(--clr-danger) !important;
 }
 
 .focus::before {
@@ -195,7 +198,7 @@ banner overlay {
 #add-task-btn:hover,
 #add-task-btn:focus {
   transform: scale(1.5);
-  color: var(--clr-orange);
+  color: var(--clr-primary);
 }
 
 /* tasker body */
@@ -206,7 +209,7 @@ banner overlay {
   border-radius: var(--border-radius) var(--border-radius) 0 0;
   margin: 0;
   padding: 0;
-  background-color: var(--clr-white);
+  background-color: var(--clr-background);
   height: calc((var(--task-height) + var(--border-size)) * 7);
 }
 
@@ -224,7 +227,7 @@ banner overlay {
   display: flex;
   justify-content: left;
   align-items: center;
-  border-bottom: var(--border-size) solid var(--clr-light-gray);
+  border-bottom: var(--border-size) solid var(--clr-accent);
   height: var(--task-height);
   width: 100%;
 }
@@ -234,14 +237,14 @@ banner overlay {
   padding: 0.625rem;
   appearance: none;
   border-radius: 50%;
-  background: linear-gradient(var(--clr-orange) 0%, var(--clr-yellow) 100%);
+  background: linear-gradient(var(--clr-primary) 0%, var(--clr-secondary) 100%);
   transition: var(--standard-transition);
 }
 
 .completed-task::before {
   content: "";
   position: absolute;
-  background-color: var(--clr-white);
+  background-color: var(--clr-background);
   margin: -40% 0 0 -40%;
   border-radius: 50%;
   width: 80%;
@@ -275,7 +278,7 @@ banner overlay {
 
 .completed p {
   text-decoration: line-through;
-  color: var(--clr-light-gray) !important;
+  color: var(--clr-accent) !important;
   font-weight: 300;
 }
 
@@ -284,13 +287,13 @@ banner overlay {
   margin-left: auto;
   padding: 0 var(--element-side-padding);
   height: 100%;
-  color: var(--clr-gray);
+  color: var(--clr-text-light);
   transition: var(--standard-transition);
 }
 
 .delete-task:hover,
 .delete-task:focus {
-  color: var(--clr-red);
+  color: var(--clr-danger);
   transform: scale(1.5);
 }
 
@@ -307,7 +310,7 @@ banner overlay {
   align-items: center;
   box-shadow: 0 0.6em 1.8em 0.6em rgba(0, 0, 0, 0.1);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
-  background-color: var(--clr-white);
+  background-color: var(--clr-background);
   height: var(--task-height);
   margin: 0;
   padding: 0 1em;
@@ -326,6 +329,6 @@ banner overlay {
 
 #clear-completed-btn:hover,
 #clear-completed-btn:focus {
-  color: var(--clr-orange);
+  color: var(--clr-primary);
   transform: scale(1.2);
 }
