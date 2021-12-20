@@ -11,17 +11,26 @@ html {
   font-size: 16px;
 }
 
+:focus {
+  outline: none;
+}
+
 :root {
   --border-radius: 0.5em;
   --border-size: 0.1em;
 
   --task-height: 9ch;
 
+  --element-side-padding: 1em;
+  --box-shadow: 0 0.6em 1.8em 0.6em rgba(0, 0, 0, 0.1);
+  --standard-transition: 150ms ease-in-out;
+
   --clr-gray: #595959;
   --clr-light-gray: #b1b1b1;
   --clr-orange: rgba(217, 80, 4, 0.7);
   --clr-yellow: rgba(217, 160, 4, 0.7);
   --clr-red: red;
+  --clr-white: white;
 }
 
 body {
@@ -31,7 +40,7 @@ body {
   align-items: center;
   user-select: none;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   padding: 0;
   margin: 0;
 }
@@ -43,7 +52,10 @@ body {
 h1,
 p,
 a,
+input[type="text"],
+button,
 ::placeholder {
+  font-size: 1em;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   letter-spacing: 0.05em;
@@ -52,22 +64,18 @@ a,
 
 ::placeholder {
   font-style: italic;
-  font-size: 1rem;
   color: var(--clr-light-gray);
 }
 
-.header-text {
+h1 {
+  padding: 0;
+  margin: 0 0 0.3em 0;
   font-size: 4rem;
   font-weight: 600;
   color: white;
 }
 
-.body-text {
-  font-size: 1rem;
-}
-
 .light-text {
-  font-size: 1rem;
   color: var(--clr-gray);
 }
 
@@ -85,29 +93,29 @@ a,
       layout
    ------------- */
 
-/* BANNER */
+/* banner */
 
-#banner {
+banner {
   display: flex;
   position: absolute;
   justify-content: center;
   align-items: center;
-  top: 0;
   width: 100%;
   height: 22rem;
   z-index: -1;
+  top: 0;
   left: 0;
   margin: 0;
   padding: 0;
 }
 
-#banner img {
+banner img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-#gradient {
+banner overlay {
   position: absolute;
   background: linear-gradient(
     100deg,
@@ -118,32 +126,29 @@ a,
   height: 100%;
 }
 
-/* TASKER */
+/* tasker */
 
 #tasker {
   position: absolute;
   display: block;
   top: 5rem;
   width: 80ch;
-}
-
-#tasker h1 {
   padding: 0;
-  margin: 0 0 0.3em 0;
+  margin: 0;
 }
 
-/* TASKER INPUT */
+/* tasker input */
 
 #tasker-input {
   display: flex;
   position: relative;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  background-color: var(--clr-white);
   border-radius: var(--border-radius);
-  background-color: white;
   height: var(--task-height);
   margin: 0 0 calc(var(--task-height) / 2) 0;
-  transition: 150ms ease-in-out;
+  padding: 0 1em;
 }
 
 #tasker-input::before {
@@ -158,7 +163,7 @@ a,
   height: 50%;
   transform-origin: 0;
   transform: scaleX(0);
-  transition: 150ms ease-in-out;
+  transition: var(--standard-transition);
 }
 
 .error::before {
@@ -171,54 +176,48 @@ a,
 
 #input-text {
   position: relative;
-  font-family: "Poppins", sans-serif;
   background-color: transparent;
-  letter-spacing: 0.05em;
-  font-size: 1rem;
-  color: black;
   width: 100%;
-  border: none;
-  outline: none;
-  padding: 0 0 0 2em;
-  margin: 0;
   height: 100%;
+  border: none;
+  padding: 0 var(--element-side-padding);
+  margin: 0;
 }
 
 #add-task-btn {
   height: 100%;
-  width: 60;
-  padding: 0 1em 0 1em;
-  margin: 0 1em 0 0;
-  transition: 150ms ease-in-out;
+  padding: 0 var(--element-side-padding);
+  margin: 0;
   transform-origin: center;
+  transition: var(--standard-transition);
 }
 
-#add-task-btn:hover {
+#add-task-btn:hover,
+#add-task-btn:focus {
   transform: scale(1.5);
   color: var(--clr-orange);
 }
 
-/* TASKER BODY */
+/* tasker body */
 
 #tasker-body {
-  z-index: 0;
   overflow: auto;
-  box-shadow: 0 0.6em 1.8em 0.6em rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow);
   border-radius: var(--border-radius) var(--border-radius) 0 0;
   margin: 0;
   padding: 0;
-  background-color: white;
+  background-color: var(--clr-white);
   height: calc((var(--task-height) + var(--border-size)) * 7);
 }
 
-/* TASKS */
+/* tasks */
 
 #tasks {
   display: block;
-  width: 100%;
+  max-width: 100%;
   height: 100%;
   margin: 0;
-  padding: 0;
+  padding: 0 var(--element-side-padding);
 }
 
 .task {
@@ -232,20 +231,17 @@ a,
 
 .completed-task {
   position: relative;
-  margin-left: 2rem;
-  padding: 0;
   padding: 0.625rem;
   appearance: none;
   border-radius: 50%;
-  background: linear-gradient(#d95204 0%, #d9a404 100%);
-  transition: 150ms ease-in-out;
+  background: linear-gradient(var(--clr-orange) 0%, var(--clr-yellow) 100%);
+  transition: var(--standard-transition);
 }
 
 .completed-task::before {
   content: "";
   position: absolute;
-  background-color: white;
-
+  background-color: var(--clr-white);
   margin: -40% 0 0 -40%;
   border-radius: 50%;
   width: 80%;
@@ -262,7 +258,8 @@ a,
   background-image: url("images/check.svg");
 }
 
-.completed-task:hover {
+.completed-task:hover,
+.completed-task:focus {
   transform: scale(1.5);
 }
 
@@ -271,7 +268,7 @@ a,
 }
 
 .text {
-  margin-left: 1em;
+  margin-left: var(--element-side-padding);
   padding: 0;
   width: 100%;
 }
@@ -285,14 +282,14 @@ a,
 .delete-task {
   position: relative;
   margin-left: auto;
-  margin-right: 1em;
-  padding: 0 1em 0 1em;
+  padding: 0 var(--element-side-padding);
   height: 100%;
   color: var(--clr-gray);
-  transition: 150ms ease-in-out;
+  transition: var(--standard-transition);
 }
 
-.delete-task:hover {
+.delete-task:hover,
+.delete-task:focus {
   color: var(--clr-red);
   transform: scale(1.5);
 }
@@ -303,31 +300,32 @@ a,
 
 /* TASKER CONTROLS */
 
-#tasker-controls {
+#tasker-footer {
   z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 0.6em 1.8em 0.6em rgba(0, 0, 0, 0.1);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
-  background-color: white;
+  background-color: var(--clr-white);
   height: var(--task-height);
   margin: 0;
-  padding: 0;
+  padding: 0 1em;
 }
 
 #tasks-left {
-  margin: 0 0 0 2em;
+  margin: 0 0 0 var(--element-side-padding);
   padding: 0;
 }
 
 #clear-completed-btn {
-  padding: 1em 0 1em 0;
-  margin: 0 2em 0 0;
-  transition: 150ms ease-in-out;
+  padding: 0 var(--element-side-padding);
+  margin: 0;
+  transition: var(--standard-transition);
 }
 
-#clear-completed-btn:hover {
+#clear-completed-btn:hover,
+#clear-completed-btn:focus {
   color: var(--clr-orange);
   transform: scale(1.2);
 }
