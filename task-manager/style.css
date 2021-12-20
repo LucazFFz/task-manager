@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap");
 
-/* VARIABLES */
+/* -------------
+   global styles
+   ------------- */
 
 html {
   font-size: 16px;
@@ -14,7 +16,7 @@ html {
   --border-size: 0.1em;
 
   --task-height: 9ch;
-  
+
   --clr-gray: #595959;
   --clr-light-gray: #b1b1b1;
   --clr-orange: rgba(217, 80, 4, 0.7);
@@ -22,11 +24,25 @@ html {
   --clr-red: red;
 }
 
-/* HELPER CLASSES */
+body {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
 
-.header-text,
-.body-text,
-.light-text,
+/* -------------
+     typography
+   ------------- */
+
+h1,
+p,
+a,
 ::placeholder {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -55,25 +71,19 @@ html {
   color: var(--clr-gray);
 }
 
+/* -------------
+     components
+   ------------- */
+
 .btn {
   background-color: transparent !important;
   border: none !important;
   cursor: pointer;
 }
 
-/* BODY */
-
-body {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  user-select: none;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-}
+/* -------------
+      layout
+   ------------- */
 
 /* BANNER */
 
@@ -159,7 +169,6 @@ body {
   transform: scaleX(1) !important;
 }
 
-
 #input-text {
   position: relative;
   font-family: "Poppins", sans-serif;
@@ -236,7 +245,7 @@ body {
   content: "";
   position: absolute;
   background-color: white;
-  
+
   margin: -40% 0 0 -40%;
   border-radius: 50%;
   width: 80%;

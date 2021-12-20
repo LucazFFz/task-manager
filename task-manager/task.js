@@ -37,7 +37,6 @@ let taskHandler = {
     },
     handleInput: function() {
         let text = taskHandler.getInputText.value;
-    
         // RESET ERROR
         taskHandler.getInputTask.classList.remove("error")
         // CONTROL TEXT
@@ -84,7 +83,7 @@ let taskHandler = {
     tasksLeftCounter: function() {
         const taskCounter = taskList.filter(task => !task.isChecked).length;
         const counter = document.querySelector("#tasks-left");
-        const counterString = taskCounter === 1 ? "item" : "items";
+        const counterString = taskCounter === 1 ? "task" : "tasks";
         counter.innerText = `${taskCounter} ${counterString} left`;
     },
     deleteCompletedTasks: function(taskList) {
@@ -120,18 +119,17 @@ let taskHandler = {
                 newIconCheck.setAttribute("class", 'fas fa-check');
                 newTaskCheckbox.appendChild(newIconCheck);
             }
-           
+            // TEXT
+            newTaskText = document.createElement("p");
+            newTaskText.setAttribute("class", "body-text text");
+            newTaskName = document.createTextNode(task.text);
+            newTaskText.appendChild(newTaskName);
             // DELETE BUTTON
             newTaskDeleteBtn = document.createElement("button");
             newTaskDeleteBtn.setAttribute("class", "body-text btn delete-task");
             let newIconTrash = document.createElement("i");
             newIconTrash.setAttribute("class", 'fas fa-trash');
             newTaskDeleteBtn.appendChild(newIconTrash);
-            // USER TASK
-            newTaskText = document.createElement("p");
-            newTaskText.setAttribute("class", "body-text text");
-            newTaskName = document.createTextNode(task.text);
-            newTaskText.appendChild(newTaskName);
             // APPEND ELEMENTS TO TASK LI
             newTaskLi.appendChild(newTaskCheckbox);
             newTaskLi.appendChild(newTaskText);
