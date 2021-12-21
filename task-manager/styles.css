@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap");
+
+/* -------------
+   global styles
+   ------------- */
+
+:root {
+    --border-radius: 0.5em;
+    --border-size: 0.1em;
+  
+    --box-shadow: 0 0.6em 1.8em 0.6em rgba(0, 0, 0, 0.1);
+    --standard-transition: 150ms ease-in-out;
+    
+    --clr-background: white;
+    --clr-text-dark: black;
+    --clr-text-light: white;
+    --clr-accent: #b1b1b1;
+    --clr-primary: rgb(217, 80, 4, 0.7);
+    --clr-secondary: rgba(217, 160, 4, 0.7);
+    --clr-secondary-fade: linear-gradient(
+      100deg,
+      var(--clr-primary) 5%,
+      var(--clr-secondary) 90%
+    );
+    
+    --clr-danger: red;
+    --clr-success: rgb(34, 180, 100);
+  }
+
+  html {
+    font-size: 16px;
+  }
+  
+  :focus {
+    outline: none;
+  }
+  
+  body {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    background-color: var(--clr-background);
+    align-items: center;
+    user-select: none;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* -------------
+       typography
+     ------------- */
+  
+  h1,
+  p,
+  a,
+  button,
+  input[type="text"],
+  ::placeholder {
+    font-size: 1em;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--clr-text-dark);
+  }
+  
+  ::placeholder {
+    font-style: italic;
+    color: var(--clr-accent);
+  }
+  
+  h1 {
+    padding: 0;
+    margin: 0 0 0.3em 0;
+    font-size: 4rem;
+    font-weight: 600;
+  }
+  
+  
+  /* -------------
+       components
+     ------------- */
+  
+  /*----- buttons -----*/
+  
+  .btn-border-narrow,
+  .btn-border-wide,
+  .btn-icon,
+  .btn-text-borderless {
+    cursor: pointer;
+  }
+  
+  .btn-text-borderless {
+    background-color: transparent;
+    border: none !important;
+  }
+  
+  .btn-text-borderless:hover {
+    transform: scale(1.2);
+    color: var(--clr-primary) !important;
+  }
+  
+  .btn-icon {
+    background-color: transparent;
+    color: var(--clr-text-dark) !important;
+    border: none !important;
+  }
+  
+  .btn-icon:hover {
+    transform: scale(1.5);
+    color: var(--clr-primary) !important;
+  }
+  
+  
+  .btn-border-narrow {
+  
+  }
+  
+  .btn-border-wide {
+  
+  }
+  
+  /*----- checkboxes -----*/
+  
+  .cb {
+    cursor: pointer;
+  }
+  
+  .cb:hover {
+    transform: scale(1.5);
+  }
+  

@@ -18,14 +18,14 @@ let taskHandler = {
         });
         // DELETE EVENTS
         this.getTasks.addEventListener("click", event => {
-            if(event.target.classList.contains("delete-task")) {
+            if(event.target.classList.contains("delete-task-btn")) {
                 const itemKey = event.target.parentElement.dataset.key;
                 this.deleteTask(itemKey);
             }
         });
         // COMPLETED EVENTS
         this.getTasks.addEventListener("click", event => {
-            if(event.target.classList.contains("completed-task")) {
+            if(event.target.classList.contains("complete-task-cb")) {
                 const itemKey = event.target.parentElement.dataset.key;
                 this.taskCompletedToggle(itemKey);
             }
@@ -113,7 +113,7 @@ let taskHandler = {
             // CHECKBOX
             newTaskCheckbox = document.createElement("input");
             newTaskCheckbox.setAttribute("type", "checkbox");
-            newTaskCheckbox.setAttribute("class", "btn completed-task");
+            newTaskCheckbox.setAttribute("class", "cb complete-task-cb");
             if(task.isChecked) {
                 let newIconCheck = document.createElement("i");
                 newIconCheck.setAttribute("class", 'fas fa-check');
@@ -121,12 +121,12 @@ let taskHandler = {
             }
             // TEXT
             newTaskText = document.createElement("p");
-            newTaskText.setAttribute("class", "body-text text");
+            newTaskText.setAttribute("class", "text");
             newTaskName = document.createTextNode(task.text);
             newTaskText.appendChild(newTaskName);
             // DELETE BUTTON
             newTaskDeleteBtn = document.createElement("button");
-            newTaskDeleteBtn.setAttribute("class", "body-text btn delete-task");
+            newTaskDeleteBtn.setAttribute("class", "btn-icon delete-task-btn");
             let newIconTrash = document.createElement("i");
             newIconTrash.setAttribute("class", 'fas fa-trash');
             newTaskDeleteBtn.appendChild(newIconTrash);

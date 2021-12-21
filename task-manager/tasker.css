@@ -1,102 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap");
+@import "styles.css";
 
 /* -------------
-   global styles
+      layout 
    ------------- */
 
-html {
-  font-size: 16px;
-}
-
-:focus {
-  outline: none;
-}
-
-:root {
-  --border-radius: 0.5em;
-  --border-size: 0.1em;
-
-  --task-height: 9ch;
-
-  --element-side-padding: 1em;
-  --box-shadow: 0 0.6em 1.8em 0.6em rgba(0, 0, 0, 0.1);
-  --standard-transition: 150ms ease-in-out;
-
-  --clr-text-dark: black;
-  --clr-text-light: #595959;
-  --clr-accent: #b1b1b1;
-  --clr-primary: rgba(217, 80, 4, 0.7);
-  --clr-secondary: rgba(217, 160, 4, 0.7);
-  --clr-danger: red;
-  --clr-accept: rgb(34, 180, 100);
-  --clr-background: white;
-}
-
-body {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  background-color: v;
-  align-items: center;
-  user-select: none;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-}
-
-/* -------------
-     typography
-   ------------- */
-
-h1,
-p,
-a,
-input[type="text"],
-button,
-::placeholder {
-  font-size: 1em;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  color: black;
-}
-
-::placeholder {
-  font-style: italic;
-  color: var(--clr-accent);
-}
-
-h1 {
-  padding: 0;
-  margin: 0 0 0.3em 0;
-  font-size: 4rem;
-  font-weight: 600;
-  color: var(--clr-background);
-}
-
-.light-text {
-  color: var(--clr-text-light);
-}
-
-/* -------------
-     components
-   ------------- */
-
-.btn {
-  background-color: transparent !important;
-  border: none !important;
-  cursor: pointer;
-}
-
-/* -------------
-      layout
-   ------------- */
-
-/* banner */
+/* ----- banner -----*/
 
 banner {
   display: flex;
@@ -120,16 +28,17 @@ banner img {
 
 banner overlay {
   position: absolute;
-  background: linear-gradient(
-    100deg,
-    var(--clr-primary) 5%,
-    var(--clr-secondary) 90%
-  );
+  background: var(--clr-secondary-fade);
   width: 100%;
   height: 100%;
+
 }
 
-/* tasker */
+/* ----- tasker -----*/
+
+#header-text {
+  color: var(--clr-text-light);
+}
 
 #tasker {
   position: absolute;
@@ -138,9 +47,13 @@ banner overlay {
   width: 80ch;
   padding: 0;
   margin: 0;
+
+  --element-side-padding: 1em;
+  --task-height: 9ch;
+  
 }
 
-/* tasker input */
+/* ----- tasker input -----*/
 
 #tasker-input {
   display: flex;
@@ -158,7 +71,7 @@ banner overlay {
   content: "";
   position: absolute;
   border-radius: calc(1 * var(--border-radius));
-  border-bottom: 0.6em solid var(--clr-accent);
+  border-bottom: 0.6em solid var(--clr-success);
   z-index: -1;
   left: 0;
   bottom: -0.3em;
@@ -187,6 +100,10 @@ banner overlay {
   margin: 0;
 }
 
+#input-text:not(:placeholder-shown)::before {
+  
+}
+
 #add-task-btn {
   height: 100%;
   padding: 0 var(--element-side-padding);
@@ -195,13 +112,7 @@ banner overlay {
   transition: var(--standard-transition);
 }
 
-#add-task-btn:hover,
-#add-task-btn:focus {
-  transform: scale(1.5);
-  color: var(--clr-primary);
-}
-
-/* tasker body */
+/* ----- tasker body -----*/
 
 #tasker-body {
   overflow: auto;
@@ -213,7 +124,7 @@ banner overlay {
   height: calc((var(--task-height) + var(--border-size)) * 7);
 }
 
-/* tasks */
+/*----- tasks -----*/
 
 #tasks {
   display: block;
@@ -225,45 +136,41 @@ banner overlay {
 
 .task {
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   align-items: center;
   border-bottom: var(--border-size) solid var(--clr-accent);
   height: var(--task-height);
   width: 100%;
 }
 
-.completed-task {
+.complete-task-cb {
   position: relative;
   padding: 0.625rem;
+  margin: 0;
   appearance: none;
   border-radius: 50%;
-  background: linear-gradient(var(--clr-primary) 0%, var(--clr-secondary) 100%);
+  background: var(--clr-secondary-fade);
   transition: var(--standard-transition);
 }
 
-.completed-task::before {
+.complete-task-cb::before {
   content: "";
   position: absolute;
   background-color: var(--clr-background);
-  margin: -40% 0 0 -40%;
   border-radius: 50%;
   width: 80%;
   height: 80%;
+  margin: -40% 0 0 -40%;
 }
 
-.completed-task::after {
+.complete-task-cb::after {
   content: "";
   position: absolute;
   padding: 0;
-  margin: -25% 0 0 -25%;
   width: 50%;
   height: 50%;
+  margin: -25% 0 0 -25%;
   background-image: url("images/check.svg");
-}
-
-.completed-task:hover,
-.completed-task:focus {
-  transform: scale(1.5);
 }
 
 .completed input::before {
@@ -272,6 +179,7 @@ banner overlay {
 
 .text {
   margin-left: var(--element-side-padding);
+  margin: 0 0 0 var(--element-side-padding);
   padding: 0;
   width: 100%;
 }
@@ -282,30 +190,27 @@ banner overlay {
   font-weight: 300;
 }
 
-.delete-task {
+.delete-task-btn {
   position: relative;
-  margin-left: auto;
   padding: 0 var(--element-side-padding);
-  height: 100%;
   color: var(--clr-text-light);
   transition: var(--standard-transition);
 }
 
-.delete-task:hover,
-.delete-task:focus {
-  color: var(--clr-danger);
-  transform: scale(1.5);
+.delete-task-btn:hover,
+.delete-task-btn:focus {
+  color: var(--clr-danger) !important;
 }
 
-.delete-task i {
+.delete-task-btn i {
   pointer-events: none;
 }
 
-/* TASKER CONTROLS */
+/*----- tasker footer -----*/
 
 #tasker-footer {
-  z-index: 1000;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 0.6em 1.8em 0.6em rgba(0, 0, 0, 0.1);
@@ -325,10 +230,4 @@ banner overlay {
   padding: 0 var(--element-side-padding);
   margin: 0;
   transition: var(--standard-transition);
-}
-
-#clear-completed-btn:hover,
-#clear-completed-btn:focus {
-  color: var(--clr-primary);
-  transform: scale(1.2);
 }
