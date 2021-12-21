@@ -1,6 +1,15 @@
 @import "styles.css";
 
 /* -------------
+  local styles
+   ------------- */
+
+* {
+  --element-side-padding: 1em;
+  --task-height: 9ch;
+}
+
+/* -------------
       layout 
    ------------- */
 
@@ -28,10 +37,9 @@ banner img {
 
 banner overlay {
   position: absolute;
-  background: var(--clr-secondary-fade);
+  background: var(--clr-secondary-gradient);
   width: 100%;
   height: 100%;
-
 }
 
 /* ----- tasker -----*/
@@ -47,10 +55,6 @@ banner overlay {
   width: 80ch;
   padding: 0;
   margin: 0;
-
-  --element-side-padding: 1em;
-  --task-height: 9ch;
-  
 }
 
 /* ----- tasker input -----*/
@@ -96,20 +100,8 @@ banner overlay {
   width: 100%;
   height: 100%;
   border: none;
-  padding: 0 var(--element-side-padding);
+  padding: 0 var(--element-padding);
   margin: 0;
-}
-
-#input-text:not(:placeholder-shown)::before {
-  
-}
-
-#add-task-btn {
-  height: 100%;
-  padding: 0 var(--element-side-padding);
-  margin: 0;
-  transform-origin: center;
-  transition: var(--standard-transition);
 }
 
 /* ----- tasker body -----*/
@@ -138,19 +130,20 @@ banner overlay {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: var(--border-size) solid var(--clr-accent);
+  border-bottom: var(--border-size) solid var(--clr-accent-light-gray);
   height: var(--task-height);
   width: 100%;
 }
 
 .complete-task-cb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   padding: 0.625rem;
-  margin: 0;
   appearance: none;
   border-radius: 50%;
-  background: var(--clr-secondary-fade);
-  transition: var(--standard-transition);
+  background: var(--clr-secondary-gradient);
 }
 
 .complete-task-cb::before {
@@ -160,21 +153,29 @@ banner overlay {
   border-radius: 50%;
   width: 80%;
   height: 80%;
-  margin: -40% 0 0 -40%;
 }
 
 .complete-task-cb::after {
-  content: "";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  content: "\f00c";
+  font-size: 0.7rem;
+  color: transparent;
   position: absolute;
-  padding: 0;
-  width: 50%;
-  height: 50%;
-  margin: -25% 0 0 -25%;
-  background-image: url("images/check.svg");
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
 }
 
 .completed input::before {
   background: transparent !important;
+}
+
+.completed input::after {
+  color: var(--clr-text-light);
 }
 
 .text {
@@ -186,24 +187,21 @@ banner overlay {
 
 .completed p {
   text-decoration: line-through;
-  color: var(--clr-accent) !important;
+  color: var(--clr-text-dark) !important;
   font-weight: 300;
 }
 
 .delete-task-btn {
   position: relative;
-  padding: 0 var(--element-side-padding);
-  color: var(--clr-text-light);
-  transition: var(--standard-transition);
+}
+
+.delete-task-btn::before {
+  content: "\f1f8";
 }
 
 .delete-task-btn:hover,
 .delete-task-btn:focus {
   color: var(--clr-danger) !important;
-}
-
-.delete-task-btn i {
-  pointer-events: none;
 }
 
 /*----- tasker footer -----*/
@@ -229,5 +227,4 @@ banner overlay {
 #clear-completed-btn {
   padding: 0 var(--element-side-padding);
   margin: 0;
-  transition: var(--standard-transition);
 }

@@ -127,9 +127,6 @@ let taskHandler = {
             // DELETE BUTTON
             newTaskDeleteBtn = document.createElement("button");
             newTaskDeleteBtn.setAttribute("class", "btn-icon delete-task-btn");
-            let newIconTrash = document.createElement("i");
-            newIconTrash.setAttribute("class", 'fas fa-trash');
-            newTaskDeleteBtn.appendChild(newIconTrash);
             // APPEND ELEMENTS TO TASK LI
             newTaskLi.appendChild(newTaskCheckbox);
             newTaskLi.appendChild(newTaskText);
