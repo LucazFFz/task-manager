@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="project.css" />
+    <link rel="stylesheet" href="modal.css" />
+  </head>
+  <body>
+    <header id="header">
+      <div id="header-background">
+        <img src="images/banner.png" alt="" class="banner" />
+        <div></div>
+      </div>
+    </header>
+    <aside>
+      <input
+        type="text"
+        id="add-section-name"
+        class="form-field-control"
+        autocomplete="off"
+      />
+      <button id="add-section-btn" class="btn-text-border-highlight">
+        Add section
+      </button>
+      <br/>
+      <header id="projects-header">
+        <input type="checkbox" id="projects-toggle-collapse-cb" class="cb"></input>
+        <label for="projects-toggle-collapse-cb"><h2>Projects</h2></label>
+        <button id="add-project-btn" class="btn-icon">
+          <i class="fas fa-plus"></i>
+        </button>
+      </header>
+      <div class="collapse-container">
+        <ul></ul>
+      </div>
+    </aside>
+    <main>
+      <div id="current-project">
+        <h1 id="header-text">Header text</h1>
+        <ul id="sections"></ul>
+      </div>
+      <!-- ADD PROJECT MODAL -->
+      <div id="add-project-modal" class="modal">
+        <div class="modal-content">
+          <header class="modal-header">
+            <h2>Add project</h2>
+          </header>
+          <section>
+            <form class="form-field">
+              <label for="add-project-field-name">Name</label>
+              <input type="text" id="add-project-field-name" class="form-field-control" 
+                     maxlength="50" name="name" autocomplete="off" required pattern="\S+.*">
+            </form>
+            <form class="form-field">
+              <label for="add-project-field-color">Color</label>
+              <input type="color" id="add-project-field-color" class="form-field-control" 
+                     name="color">
+            </form>
+          </section>
+          <footer class="modal-actions">
+            <button type="button" id="cancel-add-project-modal-btn" 
+                    class="btn-text-border">Cancel</button>
+            <button type="submit" id="submit-add-project-modal-btn" 
+                    class="btn-text-border-highlight" disabled="disabled">Add</button>
+          </footer>
+        </div>
+      </div> 
+      <!-- EDIT PROJECT MODAL -->
+      <div id="edit-project-modal" class="modal">
+        <div class="modal-content">
+          <header class="modal-header">
+            <h2>Edit project</h2>
+          </header>
+          <section>
+            <form class="form-field">
+              <label for="edit-project-field-name">Name</label>
+              <input type="text" id="edit-project-field-name" class="form-field-control" 
+                     name="name" maxlength="50" autocomplete="off" 
+                     required pattern="\S+.*" spellcheck="false">
+            </form>
+            <form class="form-field">
+              <label for="edit-project-field-color">Color</label>
+              <input type="color" id="edit-project-field-color" class="form-field-control" 
+                     name="color">
+            </form>
+          </section>
+          <footer class="modal-actions">
+            <button type="button" id="cancel-edit-project-modal-btn" 
+                    class="btn-text-border">Cancel</button>
+            <button type="submit" id="submit-edit-project-modal-btn" 
+                    class="btn-text-border-highlight" disabled="disabled">Edit</button>
+          </footer>
+        </div>
+      </div> 
+    </main>
+  </body>
+  <script src="script/projectHandler.js"></script>
+  <script src="script/section.js"></script>
+  <script src="script/project.js"></script>
+  <script src="script/modal.js"></script>
+
+  <script
+    src="https://kit.fontawesome.com/411249031c.js"
+    crossorigin="anonymous"
+  ></script>
+</html>

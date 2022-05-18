@@ -1,0 +1,158 @@
+@import "styles.css";
+
+/* -------------
+  local styles
+   ------------- */
+
+/* -------------
+      layout 
+   ------------- */
+
+/* ----- header -----*/
+
+#header {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  position: relative;
+  box-shadow: var(--box-shadow);
+}
+
+#header-background {
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+#header-background img {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+}
+
+#header-background img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+#header-background div {
+  position: absolute;
+  background: var(--clr-primary-fade);
+  height: 100%;
+  width: 100%;
+}
+
+/* ----- sidebar -----*/
+
+aside {
+  overflow: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2em 0.5em 0 0.5em;
+  box-sizing: border-box;
+  background-color: var(--clr-background-light);
+}
+
+/* header */
+
+#projects-header {
+  display: flex;
+  align-items: center;
+}
+
+#projects-header label {
+  flex-grow: 1;
+}
+
+#projects-header h2 {
+  cursor: pointer;
+}
+
+#projects-toggle-collapse-cb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  width: 3em;
+}
+
+#projects-toggle-collapse-cb::before {
+  content: "\f078";
+}
+
+#projects-toggle-collapse-cb:checked::before {
+  content: "\f054";
+}
+
+/* project container item */
+
+.collapse-container ul .project {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  border-radius: var(--border-radius);
+}
+
+.collapse-container ul .project:hover,
+.selected {
+  cursor: pointer;
+  background-color: var(--clr-accent-dark);
+}
+
+.collapse-container ul .project .project-color {
+  margin-left: 1em;
+  border-radius: 50%;
+  width: 0.8em;
+  height: 0.8em;
+  z-index: 10;
+}
+
+.collapse-container ul .project-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 1em;
+  pointer-events: none;
+}
+
+.collapse-container ul .project div {
+  margin-left: auto;
+  width: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.collapse-container ul .project:hover button::before {
+  content: "\f141";
+}
+
+.edit-project-btn {
+  position: absolute;
+}
+
+.collapse-container ul .project:hover .project-tasks-left-counter {
+  color: transparent;
+}
+
+.project-tasks-left-counter {
+  padding: 1em;
+  color: var(--clr-accent-light);
+}
+
+/* main */
+
+main {
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  padding: 2em 2em 0 2em;
+  background-color: var(--clr-background-dark);
+}
+
+/* project */

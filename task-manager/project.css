@@ -1,0 +1,154 @@
+@import "styles.css";
+
+/* -------------
+  local styles
+   ------------- */
+
+* {
+  --task-height: 7ch;
+}
+
+/* -------------
+      layout 
+   ------------- */
+
+/* ----- project -----*/
+
+#current-project {
+  width: min(100ch, 55vw);
+  height: 100%;
+}
+
+/*----- header -----*/
+
+#header-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 0 1em 0;
+}
+
+/*----- section -----*/
+
+/* header */
+
+.section {
+  list-style: none;
+  margin: 0 0 2em 0;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  border-bottom: var(--border-size) solid var(--clr-accent-dark);
+}
+
+.section-toggle-collapse-cb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  width: 3em;
+}
+
+.section-toggle-collapse-cb::before {
+  content: "\f078";
+}
+
+.section-toggle-collapse-cb:checked::before {
+  content: "\f054";
+}
+
+.section-tasks-left-counter {
+  padding-left: 0.5em;
+  color: var(--clr-accent-light);
+}
+
+/*----- tasks -----*/
+
+.tasks {
+  display: block;
+}
+
+.task {
+  gap: 0.5em;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: var(--border-size) solid var(--clr-accent-dark);
+  margin: 0 0;
+  padding: 0 1em;
+}
+
+.complete-task-cb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 1.5em;
+  height: 100%;
+  padding: 1.5em !important;
+  appearance: none;
+  border-radius: 50%;
+}
+
+.complete-task-cb::before {
+  content: "";
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+  position: absolute;
+  background: var(--clr-primary-fade);
+}
+
+.complete-task-cb::after {
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7em;
+  position: absolute;
+  background-color: var(--clr-background-dark);
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.completed input::after {
+  content: "\f00c";
+  background: transparent !important;
+}
+
+.completed input::after {
+  color: var(--clr-text);
+}
+
+.completed .task-title,
+.completed .task-desc {
+  text-decoration: line-through;
+  color: var(--clr-text-light) !important;
+  font-weight: 300;
+}
+
+.task-text-container {
+  word-wrap: break-word;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.task-desc {
+  font-weight: 300;
+  font-size: 0.9rem;
+  color: var(--clr-text-light);
+}
+
+.delete-task-btn::before {
+  content: "\f1f8";
+}
+
+.delete-task-btn:hover,
+.delete-task-btn:focus {
+  color: var(--clr-danger) !important;
+}

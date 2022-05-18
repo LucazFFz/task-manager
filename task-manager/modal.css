@@ -1,0 +1,71 @@
+@import "styles.css";
+
+.modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  width: 25em;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  position: absolute;
+}
+
+.modal-header {
+  box-shadow: var(--box-shadow);
+  z-index: 1;
+  font-size: 1.2rem;
+  background: var(--clr-primary-fade);
+  height: 4em;
+  display: flex;
+  align-items: center;
+  padding-left: 1em;
+}
+
+.modal section {
+  padding: 2em 2em 1em 2em;
+  background-color: var(--clr-background-light);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 1em 0;
+}
+
+.form-field label {
+  margin: 0 0 0.8em 0.3em;
+}
+
+.form-field-control {
+  border: var(--border-size) solid var(--clr-accent-dark);
+  border-radius: var(--border-radius);
+  background-color: var(--clr-background-dark);
+  padding: 0.3em 0.5em;
+}
+
+.modal-actions {
+  height: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: var(--border-size) solid var(--clr-accent-dark);
+  padding: 1em 2em;
+  background-color: var(--clr-background-light);
+}
+
+.modal-actions button {
+  margin-left: 1em;
+}
