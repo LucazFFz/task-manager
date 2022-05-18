@@ -44,22 +44,23 @@ banner overlay {
 
 /* ----- tasker -----*/
 
-#header-text {
+.header-text {
   color: var(--clr-text-light);
 }
 
-#tasker {
+.tasker {
   position: absolute;
   display: block;
   top: 5rem;
-  width: 80ch;
+  width: min(80ch, 90vw);
   padding: 0;
   margin: 0;
+  height: 55vh;
 }
 
 /* ----- tasker input -----*/
 
-#tasker-input {
+.tasker-input {
   display: flex;
   position: relative;
   align-items: center;
@@ -71,7 +72,7 @@ banner overlay {
   padding: 0 1em;
 }
 
-#tasker-input::before {
+.tasker-input::before {
   content: "";
   position: absolute;
   border-radius: calc(1 * var(--border-radius));
@@ -94,7 +95,7 @@ banner overlay {
   transform: scaleX(1) !important;
 }
 
-#input-text {
+.input-text {
   position: relative;
   background-color: transparent;
   width: 100%;
@@ -106,19 +107,20 @@ banner overlay {
 
 /* ----- tasker body -----*/
 
-#tasker-body {
+.tasker-body {
   overflow: auto;
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius) var(--border-radius) 0 0;
   margin: 0;
   padding: 0;
   background-color: var(--clr-background);
-  height: calc((var(--task-height) + var(--border-size)) * 7);
+  
+  height: 100%;
 }
 
 /*----- tasks -----*/
 
-#tasks {
+.tasks {
   display: block;
   max-width: 100%;
   height: 100%;
@@ -206,7 +208,7 @@ banner overlay {
 
 /*----- tasker footer -----*/
 
-#tasker-footer {
+.tasker-footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -219,12 +221,11 @@ banner overlay {
   padding: 0 1em;
 }
 
-#tasks-left {
+
+
+.tasker-footer > p {
   margin: 0 0 0 var(--element-side-padding);
   padding: 0;
 }
 
-#clear-completed-btn {
-  padding: 0 var(--element-side-padding);
-  margin: 0;
-}
+

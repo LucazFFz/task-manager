@@ -34,6 +34,25 @@ let taskHandler = {
         this.getClearCompletedBtn.addEventListener("click", () => {
             this.deleteCompletedTasks(taskList);
         });
+
+        // LOAD FROM LOCAL STORAGE AND RENDER
+        taskList = this.loadTasksFromLocalStorage();
+        taskList.forEach(task => {
+            this.renderTask(task);
+        });
+    },
+    saveTaskToLocalStorage: function(task) {
+        localStorage.setItem(task.id, JSON.stringify(task))
+    },
+    removeTaskFromLocalStorage: function(task) {
+        localStorage.removeItem(task.id);
+    },
+    loadTasksFromLocalStorage: function() {
+        let taskList = [];
+        for (let i = 0; i < localStorage.length; i++) {
+            taskList.push(JSON.parse(localStorage.getItem(localStorage.key((i)))));
+        }   
+        return taskList;
     },
     handleInput: function() {
         let text = taskHandler.getInputText.value;
@@ -50,7 +69,6 @@ let taskHandler = {
             // CONTROL TASK TEXT
             // RETURNS AN OBJECT
             if(text == "") return false;
-            if(taskList.some(obj => obj.text == text)) return false;
             return true;
         }
         function error() {
@@ -65,6 +83,7 @@ let taskHandler = {
         };
         taskList.push(task);
         taskHandler.renderTask(task);
+        this.saveTaskToLocalStorage(task);
     },
     deleteTask: function(key) {
         const index = taskList.findIndex(item => item.id === Number(key));
@@ -74,11 +93,13 @@ let taskHandler = {
         }
         taskList.splice(index, 1);
         this.renderTask(task);
+        this.removeTaskFromLocalStorage(task);
     },
     taskCompletedToggle: function(key) {
         const index = taskList.findIndex(item => item.id === Number(key));
         taskList[index].isChecked = !taskList[index].isChecked;
         this.renderTask(taskList[index]);
+        this.saveTaskToLocalStorage(taskList[index]);
     },
     tasksLeftCounter: function() {
         const taskCounter = taskList.filter(task => !task.isChecked).length;

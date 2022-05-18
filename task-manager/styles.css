@@ -62,7 +62,7 @@ a,
 button,
 input[type="text"],
 ::placeholder {
-  font-size: 1em;
+  font-size: 1rem;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   letter-spacing: 0.05em;
@@ -94,7 +94,6 @@ h1 {
   padding: var(--element-padding);
   margin: 0;
   cursor: pointer;
-  transform: origin;
   transition: var(--standard-transition);
 }
 
@@ -113,7 +112,8 @@ h1 {
   border: none !important;
 }
 
-.btn-text-borderless:hover {
+.btn-text-borderless:hover, 
+.btn-text-borderless:focus {
   transform: scale(1.2);
   color: var(--clr-primary-orange) !important;
 }
@@ -123,12 +123,13 @@ h1 {
   border: none !important;
 }
 
-.btn-icon:hover {
+.btn-icon:hover, 
+.btn-icon:focus {
   transform: scale(1.5);
   color: var(--clr-primary-orange) !important;
 }
 
 /*----- checkboxes -----*/
-.cb:hover {
+.cb:hover, .cb:focus {
   transform: scale(1.5);
 }
