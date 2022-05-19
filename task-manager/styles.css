@@ -5,7 +5,7 @@
 
 /* -------------
    global styles
-   ------------- */
+  ------------- */
 
 :root {
   --border-radius: 0.5em;
@@ -24,15 +24,14 @@
   --clr-success: rgb(34, 180, 100);
   --clr-secondary-yellow: rgba(217, 160, 4, 0.7);
   --clr-primary-orange: rgb(217, 80, 4, 0.7);
-  --clr-secondary-gradient: linear-gradient(
-    100deg,
-    var(--clr-primary-orange) 5%,
-    var(--clr-secondary-yellow) 90%
-  );
+  --clr-secondary-gradient: linear-gradient(100deg,
+
+      var(--clr-primary-orange) 5%,
+      var(--clr-secondary-yellow) 90%);
 }
 
 html {
-  font-size: 16px;
+  font-size: min(3vw, 16px);
 }
 
 :focus {
@@ -112,8 +111,12 @@ h1 {
   border: none !important;
 }
 
-.btn-text-borderless:hover, 
-.btn-text-borderless:focus {
+.btn-text-borderless:hover {
+  transform: scale(1.2);
+  color: var(--clr-primary-orange) !important;
+}
+
+.btn-text-borderless:focus-visible {
   transform: scale(1.2);
   color: var(--clr-primary-orange) !important;
 }
@@ -123,13 +126,23 @@ h1 {
   border: none !important;
 }
 
-.btn-icon:hover, 
+.btn-icon:hover,
 .btn-icon:focus {
   transform: scale(1.5);
   color: var(--clr-primary-orange) !important;
 }
 
 /*----- checkboxes -----*/
-.cb:hover, .cb:focus {
+.cb:hover,
+.cb:focus {
   transform: scale(1.5);
+}
+
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--clr-primary-orange);
+  border-radius: var(--border-radius);
 }
