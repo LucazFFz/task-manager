@@ -51,7 +51,7 @@ banner overlay {
 .tasker {
   position: absolute;
   display: block;
-  top: 5rem;
+  top: max(10%, 4vw);
   width: min(80ch, 90vw);
   padding: 0;
   margin: 0;
@@ -114,7 +114,7 @@ banner overlay {
   margin: 0;
   padding: 0;
   background-color: var(--clr-background);
-  
+
   height: 100%;
 }
 
@@ -221,11 +221,7 @@ banner overlay {
   padding: 0 1em;
 }
 
-
-
-.tasker-footer > p {
+.tasker-footer>p {
   margin: 0 0 0 var(--element-side-padding);
   padding: 0;
 }
-
-

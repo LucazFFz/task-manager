@@ -1,6 +1,6 @@
-window.onload = function() {
+window.onload = function () {
     taskHandler.init();
-}
+};
 
 // UNDERLINE TAKER INPUT WHEN FOCUSING ON TASKER INPUT
 let getTaskerInput = document.querySelector("#tasker-input");

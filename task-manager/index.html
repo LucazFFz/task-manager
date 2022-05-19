@@ -1,46 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo</title>
-    <link rel="stylesheet" href="tasker.css" />
-  </head>
-  <body>
-    <banner>
-      <img src="images/banner.jpg" alt="" class="banner" />
-      <overlay></overlay>
-    </banner>
-    <main class="tasker">
-      <h1 class="header-text">TODO</h1>
-      <section id="tasker-input" class="tasker-input">
-        <input
-          type="text"
-          id="input-text"
-          class="input-text"
-          placeholder="Enter a task"
-        />
-        <button id="add-task-btn" class="btn-icon">
-          <i class="fas fa-chevron-down"></i>
-        </button>
-      </section>
-      <section class="tasker-body">
-        <ul id="tasks" class="tasks"></ul>
-      </section>
-      <footer class="tasker-footer">
-        <p id="tasks-left" class="tasks-left">0 tasks left</p>
-        <button id="clear-completed-btn" class="btn-text-borderless">
-          Clear completed
-        </button>
-      </footer>
-    </main>
-  </body>
 
-  <script src="task.js"></script>
-  <script src="index.js"></script>
-  <script
-    src="https://kit.fontawesome.com/411249031c.js"
-    crossorigin="anonymous"
-  ></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo</title>
+  <link rel="stylesheet" href="tasker.css" />
+</head>
+
+<body>
+  <banner>
+    <img src="images/banner.jpg" alt="" class="banner" />
+    <overlay></overlay>
+  </banner>
+  <main class="tasker">
+    <h1 class="header-text">TODO</h1>
+    <section id="tasker-input" class="tasker-input">
+      <input type="text" id="input-text" class="input-text" placeholder="Enter a task" />
+      <button id="add-task-btn" class="btn-icon">
+        <i class="fas fa-chevron-down"></i>
+      </button>
+    </section>
+    <section class="tasker-body">
+      <ul id="tasks" class="tasks"></ul>
+    </section>
+    <footer class="tasker-footer">
+      <p id="tasks-left" class="tasks-left">0 tasks left</p>
+      <button id="clear-completed-btn" class="btn-text-borderless">
+        Clear completed
+      </button>
+    </footer>
+  </main>
+</body>
+
+<script src="task.js"></script>
+<script src="index.js"></script>
+<script src="https://kit.fontawesome.com/411249031c.js" crossorigin="anonymous"></script>
+
 </html>
