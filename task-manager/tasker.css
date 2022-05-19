@@ -51,7 +51,7 @@ banner overlay {
 .tasker {
   position: absolute;
   display: block;
-  top: 5rem;
+  top: max(10%, 4vw);
   width: min(80ch, 90vw);
   padding: 0;
   margin: 0;
